@@ -1,8 +1,10 @@
 package com.abc.crms.service.impl;
 
 import com.abc.crms.common.MD5Util;
+import com.abc.crms.mapper.UserMapper;
 import com.abc.crms.model.User;
 import com.abc.crms.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    UserMapper userMapper;
+
     public User getUserById(Integer id) {
-        User user = new User();
-        user.setId(Integer.valueOf(id));
-        user.setUsername("user" + id);
-        user.setNickname("nick" + id);
-        return user;
+        return userMapper.findById(id);
     }
 
     public Boolean deleteUserById(Integer id) {
