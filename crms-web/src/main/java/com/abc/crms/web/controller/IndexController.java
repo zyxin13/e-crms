@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @RequestMapping("/")
+    @RequestMapping("/server")
     public String index() {
-        return "index";
+        return "connect success!";
     }
 
 }
