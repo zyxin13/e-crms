@@ -9,6 +9,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.websocket.Session;
+import java.util.List;
+
 /**
  * Created by yuxin.zou on 2017/3/13.
  */
@@ -28,9 +31,18 @@ public class UserServiceImpl implements UserService {
     }
 
     public User addUser(User user) {
-        user.setId(66);
         user.setPassword(MD5Util.encode(user.getPassword()));
+        userMapper.insert(user);
         return user;
+    }
+
+    public Boolean login(User user) {
+        //MD5Util.encode(user.getPassword()) 使用md5加密
+        List<User> users = userMapper.findByUsernameAndPassword(user.getUsername(), MD5Util.encode(user.getPassword()));
+        if (users.isEmpty()) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -13,4 +13,6 @@ public interface UserService {
     Boolean deleteUserById(Integer id);
 
     User addUser(User user);
+
+    Boolean login(User user);
 }
