@@ -4,3 +4,5 @@ crms-web/target/*
 crms-dubbo/crms-dubbo.iml
 crms-dubbo/crms-dubbo-api/crms-dubbo-api.iml
 crms-dubbo/crms-dubbo-service/crms-dubbo-service.iml
+crms-dubbo/crms-dubbo-api/target/*
+crms-dubbo/crms-dubbo-service/target/*
